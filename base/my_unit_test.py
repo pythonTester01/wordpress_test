@@ -17,5 +17,5 @@ class MyTest(unittest.TestCase):
         self.post_title = self.content = "selenium自动化测试脚本创建文章%s" % (time())
 
 
-    # def tearDown(self):
-    #     self.dr.quit()
+    def tearDown(self):
+        self.dr.quit()
