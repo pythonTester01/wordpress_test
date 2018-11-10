@@ -4,10 +4,17 @@ class EditPostPage(PageObject):
 
     title = PageElement(name="post_title")
     publish_btn = PageElement(id_="publish")
+    text_btn = PageElement(id_="content-html",time_out=3)
     delete_btn = PageElement(css="#delete-action > a")
+    text_content = PageElement(id_="content")
+
+    def set_text_content(self,text):
+        js = '$("#content").val(%s)'%(text)
+        self.driver.execute_script(js)
 
     def set_content(self, text):
         js = 'document.getElementById("content_ifr").contentWindow.document.body.innerHTML="%s"' % (text)
+        print(js)
         self.driver.execute_script(js)
 
     def editPost(self,title,text):
